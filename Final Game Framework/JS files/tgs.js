@@ -3,6 +3,7 @@ class TGS {
       this.Pc = Bodies.circle(x,y,50,{density:0.00001,restitution:1,friction:0});
     World.add(world,this.Pc);
     this.plrbounds = createSprite(0,0,200,200);
+  this.plrbounds.visible = false;
       
     }
     display(){

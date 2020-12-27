@@ -1,4 +1,3 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -37,8 +36,30 @@ function setup() {
 	World.add(world,ground);
 	ground = Bodies.rectangle(1800,35,500,320,{isStatic:true});
 	World.add(world,ground);
-	ground = Bodies.rectangle(3000,100,500,450000,{isStatic:true});
+	ground = Bodies.rectangle(3500,100,500,450000,{isStatic:true});
 	World.add(world,ground);
+	ground = Bodies.rectangle(5000,100,500,450000,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4500,50,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4000,-100,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4000,-400,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4500,-550,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4000,-700,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4500,-850,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4000,-1000,500,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4500,-1200,200,50,{isStatic:true});
+	World.add(world,ground);
+	ground = Bodies.rectangle(4000,-1200,200,50,{isStatic:true});
+	World.add(world,ground);
+	
+
 	
 	
 
@@ -52,8 +73,8 @@ function setup() {
 	orPortal = createSprite(1600,247.5,100,110);
 	blPortal = createSprite(4000,0,100,110);
 	
-tgs = new TGS(0,0)
-packs = new pack(2000,-145	)
+tgs = new TGS(8500,-100)
+packs = new pack(2000,-145)
 
 }
 
@@ -72,14 +93,22 @@ rect(600,500,100000,400);
 rect(800,100,500,450);
 rect(1300,100,500,450);
 rect(1800,35,500,320);
+rect(4500,50,500,50);
+rect(4000,-100,500,50);
+rect(4000,-1200,200,50);
+rect(4500,-1200,200,50);
+
 fill("orange")
-rect(1600,248,100,105);
+rect(orPortal.x,orPortal.y,100,105);
 fill("blue")
-rect(4000,0,100,105);
+rect(blPortal.x,blPortal.y,100,105);
 fill("black")
 textSize(30)
 text("HP "+Math.round(hp),camera.x-45,camera.y-100);
 text("HP "+Math.round(tgshp),tgs.Pc.position.x-45,tgs.Pc.position.y-100);
+text("Use Up,Left, and Right arrow keys to move",-800,0);
+text("Use the Down arrow key to attack",-800,50)
+text("WARNING:Invisible Maze Ahead!!!",4000,-300)
 
 tgs.display();
 if(show1pac === true){
@@ -95,21 +124,36 @@ if(hp < 0||hp === 0){
 	textSize(100);
 	Body.setPosition(player.Pc, {x:200,y:00});
 	hp = 100;
+	location.reload()
 
 }
+if(tgshp < 0||tgshp === 0){
+	textSize(100);
+	fill("gold")
+	text("You Win",0,0)
+	Body.setPosition(player.Pc, {x:200,y:00});
+	hp = 100;
+
+}
+
    // Body.applyForce(player.Pc,player.Pc.position,{x:random(-0.01,0.01),y:random(-0.050,0.02)});
 
    Body.setVelocity(tgs.Pc,{x:random(-0.2,0.2),y:random(-0.5,0.1)})
-
+text("Come here my boy.",8500,0);
 }
 function Spiked(){
 	Body.setPosition(player.Pc, {x:200,y:200});
 Body.setVelocity(player.Pc,{x:0,y:0})
+location.reload()
 hp = 100		
 }
 function teleport(){
-	Body.setPosition(player.Pc, {x:4000,y:0});
+	Body.setPosition(player.Pc, {x:blPortal.x,y:blPortal.y});
 	Body.setVelocity(player.Pc,{x:0,y:0})
+	blPortal.x = 8000;
+	blPortal.y = 0;
+	orPortal.x = 4500;
+	orPortal.y = -1300
 	
 }
 function harm(){
@@ -123,7 +167,7 @@ function harm(){
 
 
 function usemeds(){
-	hp += 20;
+	hp += 50;
 	packs.pack.remove();
 	show1pac = false;
 }
