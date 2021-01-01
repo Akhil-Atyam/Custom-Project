@@ -22,6 +22,18 @@ class Player {
     if(keyIsDown(UP_ARROW)){
       Body.applyForce(this.Pc,this.Pc.position,{x:0,y:-0.05});
   }
+  lbutton.mousePressed(()=>{
+    Body.applyForce(this.Pc,this.Pc.position,{x:-0.08,y:0});
+
+  })
+  rbutton.mousePressed(()=>{
+    Body.applyForce(this.Pc,this.Pc.position,{x:0.08,y:0});
+
+  })
+  ubutton.mousePressed(()=>{
+    Body.applyForce(this.Pc,this.Pc.position,{x:0,y:-0.2});
+
+  })
   this.plrbounds.overlap(orPortal,teleport);
   this.plrbounds.overlap(tgs.plrbounds,harm);
   this.plrbounds.overlap(packs.pack,usemeds);

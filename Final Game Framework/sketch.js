@@ -16,13 +16,14 @@ var hp = 100;
 var tgs;
 var tgshp = 100
 var show1pac = true;
+var lbutton,rbutton,ubutton,abutton
 function preload()
 {
 	
 }
 
 function setup() {
-	createCanvas(1200,500);
+	createCanvas(windowWidth-4,windowHeight-4);
 	
 
 	engine = Engine.create();
@@ -44,7 +45,7 @@ function setup() {
 	World.add(world,ground);
 	ground = Bodies.rectangle(4000,-100,500,50,{isStatic:true});
 	World.add(world,ground);
-	ground = Bodies.rectangle(4000,-400,500,50,{isStatic:true});
+	 ground = Bodies.rectangle(4000,-400,500,50,{isStatic:true});
 	World.add(world,ground);
 	ground = Bodies.rectangle(4500,-550,500,50,{isStatic:true});
 	World.add(world,ground);
@@ -58,7 +59,23 @@ function setup() {
 	World.add(world,ground);
 	ground = Bodies.rectangle(4000,-1200,200,50,{isStatic:true});
 	World.add(world,ground);
-	
+	ubutton = createButton("Up")
+	ubutton.position(100,height-100)
+	ubutton.style("width","50px")
+	ubutton.style("height","50px")
+	lbutton = createButton("Left")
+	lbutton.position(40,height-100)
+	lbutton.style("width","50px")
+	lbutton.style("height","50px")
+	rbutton = createButton("Right")
+	rbutton.position(160,height-100)
+	rbutton.style("width","50px")
+	rbutton.style("height","50px")
+	abutton = createButton("Attack")
+	abutton.position(width-150,height-150)
+	abutton.style("width","100px")
+	abutton.style("height","100px")
+
 
 	
 	
@@ -162,6 +179,10 @@ function harm(){
 	Body.setVelocity(player.Pc,{x:random(-2,2),y:-5})
 		tgshp = tgshp - 0.3
 	}
+	abutton.mousePressed(()=>{
+		tgshp = tgshp - 0.4
+
+	})
 
 }
 
